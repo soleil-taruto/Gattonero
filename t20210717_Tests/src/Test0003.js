@@ -1,3 +1,7 @@
+var @@_TestVar01;
+var @@_TestVar02;
+var @@_TestVar03;
+
 function @@_Test01() {
 	console.log("@@_Test01");
 }
