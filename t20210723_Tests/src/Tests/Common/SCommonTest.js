@@ -22,10 +22,24 @@ function @@_CompList() {
 	@@_CompList_Test01([ "A", "B" ], [ "B", "A" ], -1);
 }
 
-function @@_IndexOf(arr, match) {
+function @@_IndexOf() {
 	// TODO
 }
 
-function @@_Swap(arr, a, b) {
+function @@_Swap() {
 	// TODO
+}
+
+function @@_Comp_Test01(a, b, assume) {
+	var ans = SCommon_Comp(a, b);
+
+	if(ans != assume) {
+		throw null;
+	}
+}
+
+function @@_Comp() {
+	@@_Comp_Test01("A", "A", 0);
+	@@_Comp_Test01("A", "B", -1);
+	@@_Comp_Test01("B", "A", 1);
 }
