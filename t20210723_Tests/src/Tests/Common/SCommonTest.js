@@ -1,13 +1,7 @@
 function @@_CompList_Test01(a, b, assume) {
-	var ans = SCommon_CompList(a, b, (aa, bb) => aa - bb);
+	var ans = SCommon_CompList(a, b, SCommon_Comp);
 
-	if(ans == 0 && assume != 0) {
-		throw null;
-	}
-	else if(ans > 0 && assume != 1) {
-		throw null;
-	}
-	else if(ans < 0 && assume != -1) {
+	if(ans != assume) {
 		throw null;
 	}
 }

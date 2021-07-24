@@ -17,7 +17,7 @@ function @@_CompList(a, b, comp) {
 			return ret;
 		}
 	}
-	return a.length - b.length;
+	return @@_Comp(a.length, b.length);
 }
 
 /*
@@ -41,11 +41,29 @@ function @@_IndexOf(arr, match) {
 	要素を入れ替える。
 
 	arr: [] 配列
-	a: 位置1
-	b: 位置2
+	a: index 位置1
+	b: index 位置2
 */
 function @@_Swap(arr, a, b) {
 	var tmp = arr[a];
 	arr[a] = arr[b];
 	arr[b] = tmp;
+}
+
+/*
+	値を比較します。
+
+	a: 値1
+	b: 値1
+
+	ret: 比較結果
+*/
+function @@_Comp(a, b) {
+	if(a < b) {
+		return -1;
+	}
+	if(a > b) {
+		return 1;
+	}
+	return 0;
 }
