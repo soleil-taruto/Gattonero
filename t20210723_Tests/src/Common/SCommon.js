@@ -7,7 +7,7 @@
 
 	ret: 比較結果
 */
-function @@_CompList(a, b, comp) {
+function @@_CompArr(a, b, comp) {
 	var minlen = Math.min(a.length, b.length);
 
 	for(var index = 0; index < minlen; index++) {
@@ -74,9 +74,9 @@ function @@_Comp(a, b) {
 /*
 	シャローコピーを行う。
 
-	arr: 元
+	arr: [] 配列
 
-	ret: 新しい配列
+	ret: [] 新しい配列
 */
 function @@_CopyShallow(arr) {
 	var dest = new Array(arr.length);
@@ -85,4 +85,50 @@ function @@_CopyShallow(arr) {
 		dest[index] = arr[index];
 	}
 	return dest;
+}
+
+/*
+	部分配列を得る。
+
+	arr: [] 配列
+	start: 開始位置 (含む)
+	end: 終了位置 (含まない)
+
+	ret: [] 部分配列
+*/
+function @@_GetSubArr(arr, start, end) {
+	return arr.subarray(start, end);
+}
+
+/*
+	配列を連結する。
+
+	arr1: [] 配列1
+	arr2: [] 配列2
+
+	ret: [] 連結した配列
+*/
+function @@_Join(arr1, arr2) {
+	return arr1.concat(arr2);
+}
+
+/*
+	配列に要素を挿入する。
+
+	arr: [] 配列
+	index: 挿入位置
+
+	ret: arr
+*/
+function @@_Insert(arr, index, element) {
+	if(index == 0) {
+		arr.unshift(element);
+	}
+	else if(index == arr.length) {
+		arr.push(element);
+	}
+	else {
+		arr.splice(index, 0, element);
+	}
+	return arr;
 }

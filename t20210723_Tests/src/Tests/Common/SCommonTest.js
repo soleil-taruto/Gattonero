@@ -1,30 +1,30 @@
-function @@_CompList_Test01(a, b, assume) {
-	var ans = SCommon_CompList(a, b, SCommon_Comp);
+function @@_CompArr_Test01(a, b, assume) {
+	var ans = SCommon_CompArr(a, b, SCommon_Comp);
 
 	if(ans !== assume) {
 		throw null;
 	}
-	ans = SCommon_CompList(b, a, SCommon_Comp);
+	ans = SCommon_CompArr(b, a, SCommon_Comp);
 
 	if(ans !== -assume) {
 		throw null;
 	}
 }
 
-function @@_CompList() {
-	@@_CompList_Test01([], [], 0);
-	@@_CompList_Test01([ "A" ], [], 1);
-	@@_CompList_Test01([], [ "A" ], -1);
-	@@_CompList_Test01([ "A" ], [ "A" ], 0);
-	@@_CompList_Test01([ "B" ], [ "A" ], 1);
-	@@_CompList_Test01([ "A" ], [ "B" ], -1);
-	@@_CompList_Test01([ "A", "A" ], [ "A" ], 1);
-	@@_CompList_Test01([ "A" ], [ "A", "A" ], -1);
-	@@_CompList_Test01([ "A", "A" ], [ "A", "A" ], 0);
-	@@_CompList_Test01([ "A", "B" ], [ "A", "A" ], 1);
-	@@_CompList_Test01([ "A", "A" ], [ "A", "B" ], -1);
-	@@_CompList_Test01([ "B", "A" ], [ "A", "B" ], 1);
-	@@_CompList_Test01([ "A", "B" ], [ "B", "A" ], -1);
+function @@_CompArr() {
+	@@_CompArr_Test01([], [], 0);
+	@@_CompArr_Test01([ "A" ], [], 1);
+	@@_CompArr_Test01([], [ "A" ], -1);
+	@@_CompArr_Test01([ "A" ], [ "A" ], 0);
+	@@_CompArr_Test01([ "B" ], [ "A" ], 1);
+	@@_CompArr_Test01([ "A" ], [ "B" ], -1);
+	@@_CompArr_Test01([ "A", "A" ], [ "A" ], 1);
+	@@_CompArr_Test01([ "A" ], [ "A", "A" ], -1);
+	@@_CompArr_Test01([ "A", "A" ], [ "A", "A" ], 0);
+	@@_CompArr_Test01([ "A", "B" ], [ "A", "A" ], 1);
+	@@_CompArr_Test01([ "A", "A" ], [ "A", "B" ], -1);
+	@@_CompArr_Test01([ "B", "A" ], [ "A", "B" ], 1);
+	@@_CompArr_Test01([ "A", "B" ], [ "B", "A" ], -1);
 }
 
 function @@_IndexOf_Test01(arr, target, assume) {
@@ -45,12 +45,12 @@ function @@_IndexOf() {
 function @@_Swap_Test01(arr, a, b, assume) {
 	var ans = SCommon_Swap(SCommon_CopyShallow(arr), a, b);
 
-	if(SCommon_CompList(ans, assume, SCommon_Comp) != 0) {
+	if(SCommon_CompArr(ans, assume, SCommon_Comp) != 0) {
 		throw null;
 	}
 	ans = SCommon_Swap(SCommon_CopyShallow(arr), b, a);
 
-	if(SCommon_CompList(ans, assume, SCommon_Comp) != 0) {
+	if(SCommon_CompArr(ans, assume, SCommon_Comp) != 0) {
 		throw null;
 	}
 }
@@ -83,10 +83,10 @@ function @@_Comp() {
 function @@_CopyShallow_Test01(arr) {
 	var ans = SCommon_CopyShallow(arr);
 
-	if(SCommon_CompList(ans, arr, SCommon_Comp) != 0) {
+	if(SCommon_CompArr(ans, arr, SCommon_Comp) != 0) {
 		throw null;
 	}
-	if(SCommon_CompList(arr, ans, SCommon_Comp) != 0) {
+	if(SCommon_CompArr(arr, ans, SCommon_Comp) != 0) {
 		throw null;
 	}
 }
@@ -101,7 +101,7 @@ function @@_CopyShallow() {
 // ----
 
 function @@_Main() {
-	SCommonTest_CompList();
+	SCommonTest_CompArr();
 	SCommonTest_IndexOf();
 	SCommonTest_Swap();
 	SCommonTest_Comp();
