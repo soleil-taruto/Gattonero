@@ -43,11 +43,14 @@ function @@_IndexOf(arr, match) {
 	arr: [] 配列
 	a: index 位置1
 	b: index 位置2
+
+	ret: arr
 */
 function @@_Swap(arr, a, b) {
 	var tmp = arr[a];
 	arr[a] = arr[b];
 	arr[b] = tmp;
+	return arr;
 }
 
 /*
@@ -66,4 +69,20 @@ function @@_Comp(a, b) {
 		return 1;
 	}
 	return 0;
+}
+
+/*
+	シャローコピーを行う。
+
+	arr: 元
+
+	ret: 新しい配列
+*/
+function @@_CopyShallow(arr) {
+	var dest = new Array(arr.length);
+
+	for(var index = 0; index < arr.length; index++) {
+		dest[index] = arr[index];
+	}
+	return dest;
 }
