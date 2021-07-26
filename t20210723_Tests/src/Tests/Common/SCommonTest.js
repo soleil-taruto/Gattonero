@@ -97,3 +97,17 @@ function @@_CopyShallow() {
 	@@_CopyShallow_Test01([ 100, 200 ]);
 	@@_CopyShallow_Test01([ 100, 200, 300 ]);
 }
+
+// ----
+
+function @@_Main() {
+	SCommonTest_CompList();
+	SCommonTest_IndexOf();
+	SCommonTest_Swap();
+	SCommonTest_Comp();
+	SCommonTest_CopyShallow();
+
+	// ----
+
+	console.log("OK!");
+}
