@@ -91,13 +91,18 @@ function @@_CopyShallow(arr) {
 	部分配列を得る。
 
 	arr: [] 配列
-	start: 開始位置 (含む)
-	end: 終了位置 (含まない)
+	start: 開始位置
+	count: 部分配列の長さ
 
 	ret: [] 部分配列
 */
-function @@_GetSubArr(arr, start, end) {
-	return arr.subarray(start, end);
+function @@_GetSubArr(arr, start, count) {
+	var dest = new Array(count);
+
+	for(var index = 0; index < count; index++) {
+		dest[index] = arr[start + index];
+	}
+	return dest;
 }
 
 /*
@@ -129,6 +134,27 @@ function @@_Insert(arr, index, element) {
 	}
 	else {
 		arr.splice(index, 0, element);
+	}
+	return arr;
+}
+
+/*
+	配列から要素を削除する。
+
+	arr: [] 配列
+	index: 削除位置
+
+	ret: arr
+*/
+function @@_Remove(arr, index) {
+	if(index == 0) {
+		arr.shift();
+	}
+	else if(index == arr.length) {
+		arr.pop();
+	}
+	else {
+		arr.splice(index, 1);
 	}
 	return arr;
 }

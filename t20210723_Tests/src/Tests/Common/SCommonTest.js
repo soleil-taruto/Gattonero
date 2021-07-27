@@ -98,14 +98,90 @@ function @@_CopyShallow() {
 	@@_CopyShallow_Test01([ 100, 200, 300 ]);
 }
 
+function @@_GetSubArr_Test01(arr, start, end, assume) {
+	var ans = SCommon_GetSubArr(arr, start, end);
+
+	if(SCommon_CompArr(ans, assume, SCommon_Comp) != 0) {
+		throw null;
+	}
+}
+
+function @@_GetSubArr() {
+	@@_GetSubArr_Test01([], 0, 0, []);
+	@@_GetSubArr_Test01([ "A" ], 0, 0, []);
+	@@_GetSubArr_Test01([ "A" ], 1, 0, []);
+	@@_GetSubArr_Test01([ "A" ], 0, 1, [ "A" ]);
+	@@_GetSubArr_Test01([ "A", "B", "C" ], 0, 1, [ "A" ]);
+	@@_GetSubArr_Test01([ "A", "B", "C" ], 1, 1, [ "B",]);
+	@@_GetSubArr_Test01([ "A", "B", "C" ], 2, 1, [ "C" ]);
+	@@_GetSubArr_Test01([ "A", "B", "C" ], 0, 2, [ "A", "B" ]);
+	@@_GetSubArr_Test01([ "A", "B", "C" ], 1, 2, [ "B", "C" ]);
+	@@_GetSubArr_Test01([ "A", "B", "C" ], 0, 3, [ "A", "B", "C" ]);
+}
+
+function @@_Join_Test01(arr1, arr2, assume) {
+	var ans = SCommon_Join(arr1, arr2);
+
+	if(SCommon_CompArr(ans, assume, SCommon_Comp) != 0) {
+		throw null;
+	}
+}
+
+function @@_Join() {
+	@@_Join_Test01([], [], []);
+	@@_Join_Test01([ "A" ], [], [ "A" ]);
+	@@_Join_Test01([], [ "A" ], [ "A" ]);
+	@@_Join_Test01([ "A" ], [ "B" ], [ "A", "B" ]);
+	@@_Join_Test01([ 1, 2, 3 ], [ "A", "B", "C" ], [ 1, 2, 3, "A", "B", "C" ]);
+}
+
+function @@_Insert_Test01(arr, index, element, assume) {
+	var ans = SCommon_Insert(arr, index, element);
+
+	if(SCommon_CompArr(ans, assume, SCommon_Comp) != 0) {
+		throw null;
+	}
+}
+
+function @@_Insert() {
+	@@_Insert_Test01([], 0, "A", [ "A" ]);
+	@@_Insert_Test01([ "A" ], 0, "B", [ "B", "A" ]);
+	@@_Insert_Test01([ "A" ], 1, "B", [ "A", "B" ]);
+	@@_Insert_Test01([ "A", "B", "C" ], 0, "XXX", [ "XXX", "A", "B", "C" ]);
+	@@_Insert_Test01([ "A", "B", "C" ], 1, "XXX", [ "A", "XXX", "B", "C" ]);
+	@@_Insert_Test01([ "A", "B", "C" ], 2, "XXX", [ "A", "B", "XXX", "C" ]);
+	@@_Insert_Test01([ "A", "B", "C" ], 3, "XXX", [ "A", "B", "C", "XXX" ]);
+}
+
+function @@_Remove_Test01(arr, index, assume) {
+	var ans = SCommon_Remove(arr, index);
+
+	if(SCommon_CompArr(ans, assume, SCommon_Comp) != 0) {
+		throw null;
+	}
+}
+
+function @@_Remove() {
+	@@_Remove_Test01([ "A" ], 0, []);
+	@@_Remove_Test01([ "A", "B" ], 0, [ "B" ]);
+	@@_Remove_Test01([ "A", "B" ], 1, [ "A" ]);
+	@@_Remove_Test01([ "A", "B", "C" ], 0, [ "B", "C" ]);
+	@@_Remove_Test01([ "A", "B", "C" ], 1, [ "A", "C" ]);
+	@@_Remove_Test01([ "A", "B", "C" ], 2, [ "A", "B" ]);
+}
+
 // ----
 
 function @@_Main() {
-	SCommonTest_CompArr();
-	SCommonTest_IndexOf();
-	SCommonTest_Swap();
-	SCommonTest_Comp();
-	SCommonTest_CopyShallow();
+	@@_CompArr();
+	@@_IndexOf();
+	@@_Swap();
+	@@_Comp();
+	@@_CopyShallow();
+	@@_GetSubArr();
+	@@_Join();
+	@@_Insert();
+	@@_Remove();
 
 	// ----
 
