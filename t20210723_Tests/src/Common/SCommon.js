@@ -158,3 +158,99 @@ function @@_Remove(arr, index) {
 	}
 	return arr;
 }
+
+/*
+	配列から要素を高速で削除する。
+	並び方は壊れる。
+
+	arr: [] 配列
+	index: 削除位置
+
+	ret: arr
+*/
+function @@_FastRemove(arr, index) {
+	arr[index] = @@_Last(arr);
+	arr.pop();
+	return arr;
+}
+
+/*
+	配列の最後の要素を参照する。
+
+	arr: [] 配列
+
+	ret: 配列の最後の要素
+*/
+function @@_Last(arr) {
+	return arr[arr.length - 1];
+}
+
+/*
+	配列に要素を追加する。
+
+	arr: [] 配列
+	element: 要素
+
+	ret: arr
+*/
+function @@_Add(arr, element) {
+	arr.push(element);
+	return arr;
+}
+
+/*
+	配列の最後の要素を取り出す。
+
+	arr: [] 配列
+
+	ret: 取り出した要素
+*/
+function @@_Unadd(arr) {
+	return arr.pop();
+}
+
+/*
+	配列の先頭に要素を追加する。
+
+	arr: [] 配列
+	element: 要素
+
+	ret: arr
+*/
+function @@_AddToTop(arr, element) {
+	arr.unshift(element);
+	return arr;
+}
+
+/*
+	配列の先頭の要素を取り出す。
+
+	arr: [] 配列
+
+	ret: 取り出した要素
+*/
+function @@_UnaddTop(arr) {
+	return arr.shift();
+}
+
+/*
+	オブジェクトをJson文字列に変換する。
+
+	prm: オブジェクト
+
+	ret: Json文字列
+*/
+function @@_ToJson(prm) {
+	return JSON.stringify(prm);
+}
+
+/*
+	Json文字列をオブジェクトに変換する。
+
+	prm: Json文字列
+
+	ret: オブジェクト
+*/
+function @@_FromJson(prm) {
+	return JSON.parse(prm);
+}

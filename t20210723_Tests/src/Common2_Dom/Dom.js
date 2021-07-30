@@ -1,28 +1,45 @@
+/*
+	idからドキュメント内のタグを取得する。
+
+	id: id
+
+	ret: タグ
+*/
 function @@_Get(id) {
 	return document.getElementById(id);
 }
 
+/*
+	タグの配下にタグを追加する。
+
+	parentTag: 追加先のタグ
+	tag: 追加するタグ
+
+	ret: tag
+*/
 function @@_Append(parentTag, tag) {
 	parentTag.appendChild(tag);
-}
-
-function @@_Remove(tag) {
-	tag.parentNode.removeChild(tag);
-}
-
-
-
-function @@_ToJson(prm) {
-	return JSON.stringify(prm);
-}
-
-function @@_FromJson(prm) {
-	return JSON.parse(prm);
+	return tag;
 }
 
 /*
+	タグを削除する。
+
+	tag: 削除するタグ
+
+	ret: tag
+*/
+function @@_Remove(tag) {
+	tag.parentNode.removeChild(tag);
+	return tag;
+}
+
+/*
+	使うのこれ？
+
 	ex.
-		@@_Request("POST", "/coffee/sugar.xxx?a=123", @@_ToJson({ a: 123 }), null, response => console.log(response));
+		var jres = @@_Request("POST", "/coffee/sugar.xxx?a=123", SCommon_ToJson({ a: 123 }), "{}", response => console.log(response));
+		var res = SCommon_FromJson(jres);
 */
 function @@_Request(method, url, prm, def, reaction) {
 	var xhr = new XMLHttpRequest();
@@ -30,7 +47,7 @@ function @@_Request(method, url, prm, def, reaction) {
 	xhr.onreadystatechange = function() {
 		if(xhr.readyState == 4) {
 			if(xhr.status == 200) {
-				reaction(JSON.parse(xhr.responseText));
+				reaction(xhr.responseText);
 			}
 			else {
 				reaction(def);
@@ -40,4 +57,6 @@ function @@_Request(method, url, prm, def, reaction) {
 
 	xhr.open(method, url);
 	xhr.send(prm);
+
+	return true;
 }
