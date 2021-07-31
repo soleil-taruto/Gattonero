@@ -38,8 +38,10 @@ function @@_Remove(tag) {
 	Žg‚¤‚Ì‚±‚êH
 
 	ex.
-		var jres = @@_Request("POST", "/coffee/sugar.xxx?a=123", SCommon_ToJson({ a: 123 }), "{}", response => console.log(response));
-		var res = SCommon_FromJson(jres);
+		@@_Request("POST", "/coffee/sugar.xxx?a=123", SCommon_ToJson({ a: 123 }), "{}", res => {
+			var obj = SCommon_FromJson(res);
+			console.log(obj);
+		});
 */
 function @@_Request(method, url, prm, def, reaction) {
 	var xhr = new XMLHttpRequest();
