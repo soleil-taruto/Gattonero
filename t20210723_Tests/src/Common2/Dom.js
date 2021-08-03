@@ -35,10 +35,23 @@ function @@_Remove(tag) {
 }
 
 /*
-	使うのこれ？
+	HTTPリクエストを投げる。
+
+	method: "GET", "POST" (他のメソッドは想定しない)
+	url: URL
+	prm: GET の場合は null, POST の場合は Json など
+	def: 失敗時のレスポンスオブジェクト
+	reaction: () 受信イベント, 引数：受信オブジェクト
+
+	ret: true
 
 	ex.
-		@@_Request("POST", "/coffee/sugar.xxx?a=123", SCommon_ToJson({ a: 123 }), "{}", res => {
+		@@_Request("GET", "/coffee/sugar.xxx?a=123", null, "{}", res => {
+			var obj = SCommon_FromJson(res);
+			console.log(obj);
+		});
+
+		@@_Request("POST", "/coffee/sugar.xxx", SCommon_ToJson({ a: 123 }), "{}", res => {
 			var obj = SCommon_FromJson(res);
 			console.log(obj);
 		});
@@ -58,7 +71,13 @@ function @@_Request(method, url, prm, def, reaction) {
 	};
 
 	xhr.open(method, url);
-	xhr.send(prm);
+
+	if(prm == null) {
+		xhr.send();
+	}
+	else {
+		xhr.send(prm);
+	}
 
 	return true;
 }
