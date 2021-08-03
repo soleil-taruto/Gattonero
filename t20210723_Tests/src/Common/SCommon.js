@@ -205,7 +205,7 @@ function @@_Add(arr, element) {
 
 	ret: 取り出した要素
 */
-function @@_Unadd(arr) {
+function @@_Pop(arr) {
 	return arr.pop();
 }
 
@@ -229,7 +229,7 @@ function @@_AddToTop(arr, element) {
 
 	ret: 取り出した要素
 */
-function @@_UnaddTop(arr) {
+function @@_PopFromTop(arr) {
 	return arr.shift();
 }
 

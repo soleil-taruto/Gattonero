@@ -136,7 +136,7 @@ function @@_Join() {
 }
 
 function @@_Insert_Test01(arr, index, element, assume) {
-	var ans = SCommon_Insert(arr, index, element);
+	var ans = SCommon_Insert(SCommon_CopyShallow(arr), index, element);
 
 	if(SCommon_CompArr(ans, assume, SCommon_Comp) != 0) {
 		throw null;
@@ -154,7 +154,7 @@ function @@_Insert() {
 }
 
 function @@_Remove_Test01(arr, index, assume) {
-	var ans = SCommon_Remove(arr, index);
+	var ans = SCommon_Remove(SCommon_CopyShallow(arr), index);
 
 	if(SCommon_CompArr(ans, assume, SCommon_Comp) != 0) {
 		throw null;
@@ -170,6 +170,66 @@ function @@_Remove() {
 	@@_Remove_Test01([ "A", "B", "C" ], 2, [ "A", "B" ]);
 }
 
+function @@_FastRemove_Test01(arr, index, assume) {
+	var ans = SCommon_FastRemove(SCommon_CopyShallow(arr), index);
+
+	if(SCommon_CompArr(ans, assume, SCommon_Comp) != 0) {
+		throw null;
+	}
+}
+
+function @@_FastRemove() {
+	@@_FastRemove_Test01([ "A" ], 0, []);
+	@@_FastRemove_Test01([ "A", "B" ], 0, [ "B" ]);
+	@@_FastRemove_Test01([ "A", "B" ], 1, [ "A" ]);
+	@@_FastRemove_Test01([ "A", "B", "C" ], 0, [ "C", "B" ]);
+	@@_FastRemove_Test01([ "A", "B", "C" ], 1, [ "A", "C" ]);
+	@@_FastRemove_Test01([ "A", "B", "C" ], 2, [ "A", "B" ]);
+}
+
+function @@_Last_Test01(arr, assume) {
+	var ans = SCommon_Last(arr);
+
+	if(ans != assume) {
+		throw null;
+	}
+}
+
+function @@_Last() {
+	@@_Last_Test01([ "A" ], "A");
+	@@_Last_Test01([ "A", "B" ], "B");
+	@@_Last_Test01([ "A", "B", "C" ], "C");
+}
+
+function @@_Add_Test01(arr, element, assume) {
+	var ans = SCommon_Add(SCommon_CopyShallow(arr), element);
+
+	if(SCommon_CompArr(ans, assume, SCommon_Comp) != 0) {
+		throw null;
+	}
+}
+
+function @@_Add() {
+	@@_Add_Test01([], "XXX", [ "XXX" ]);
+	@@_Add_Test01([ "A" ], "XXX", [ "A", "XXX" ]);
+	@@_Add_Test01([ "A", "B" ], "XXX", [ "A", "B", "XXX" ]);
+	@@_Add_Test01([ "A", "B", "C" ], "XXX", [ "A", "B", "C", "XXX" ]);
+}
+
+function @@_Pop_Test01(arr, assume) {
+	var ans = SCommon_Pop(arr);
+
+	if(ans != assume) {
+		throw null;
+	}
+}
+
+function @@_Pop() {
+	@@_Pop_Test01([ "A" ], "A");
+	@@_Pop_Test01([ "A", "B" ], "B");
+	@@_Pop_Test01([ "A", "B", "C" ], "C");
+}
+
 // ----
 
 function @@_Main() {
@@ -182,6 +242,14 @@ function @@_Main() {
 	@@_Join();
 	@@_Insert();
 	@@_Remove();
+	@@_FastRemove();
+	@@_Last();
+	@@_Add();
+	@@_Pop();
+//	@@_AddToTop();
+//	@@_PopFromTop();
+//	@@_ToJson();
+//	@@_FromJson();
 
 	// ----
 

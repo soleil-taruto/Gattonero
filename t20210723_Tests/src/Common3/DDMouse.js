@@ -7,12 +7,12 @@ var @@_X = 0;
 var @@_Y = 0;
 
 function @@_ScreenPosToCanvasPos() {
-	var canvasRect = @@^_Canvas.getBoundingClientRect();
+	var canvasRect = DD_Canvas.getBoundingClientRect();
 
 	@@_X -= canvasRect.left;
 	@@_Y -= canvasRect.top;
-	@@_X *= @@^_W / canvasRect.width;
-	@@_Y *= @@^_H / canvasRect.height;
+	@@_X *= DD_W / canvasRect.width;
+	@@_Y *= DD_H / canvasRect.height;
 }
 
 function @@_TouchStart(x, y) {
@@ -52,14 +52,14 @@ function @@_GetEvMouse(touch) {
 
 function @@_INIT() {
 	if(window.ontouchstart === null) {
-		@@^_CanvasBox.ontouchstart = @@_GetEvTouch(@@_TouchStart);
-		@@^_CanvasBox.ontouchmove  = @@_GetEvTouch(@@_TouchMove);
-		@@^_CanvasBox.ontouchend   = @@_GetEvTouch(@@_TouchEnd);
+		DD_CanvasBox.ontouchstart = @@_GetEvTouch(@@_TouchStart);
+		DD_CanvasBox.ontouchmove  = @@_GetEvTouch(@@_TouchMove);
+		DD_CanvasBox.ontouchend   = @@_GetEvTouch(@@_TouchEnd);
 	}
 	else {
-		@@^_CanvasBox.onmousedown  = @@_GetEvMouse(@@_TouchStart);
-		@@^_CanvasBox.onmousemove  = @@_GetEvMouse(@@_TouchMove);
-		@@^_CanvasBox.onmouseup    = @@_GetEvMouse(@@_TouchEnd);
-		@@^_CanvasBox.onmouseleave = @@_GetEvMouse(@@_TouchEnd);
+		DD_CanvasBox.onmousedown  = @@_GetEvMouse(@@_TouchStart);
+		DD_CanvasBox.onmousemove  = @@_GetEvMouse(@@_TouchMove);
+		DD_CanvasBox.onmouseup    = @@_GetEvMouse(@@_TouchEnd);
+		DD_CanvasBox.onmouseleave = @@_GetEvMouse(@@_TouchEnd);
 	}
 }
