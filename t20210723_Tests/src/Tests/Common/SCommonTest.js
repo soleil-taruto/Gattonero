@@ -230,6 +230,43 @@ function @@_Pop() {
 	@@_Pop_Test01([ "A", "B", "C" ], "C");
 }
 
+function @@_AddToTop_Test01(arr, element, assume) {
+	var ans = SCommon_AddToTop(SCommon_CopyShallow(arr), element);
+
+	if(SCommon_CompArr(ans, assume, SCommon_Comp) != 0) {
+		throw null;
+	}
+}
+
+function @@_AddToTop() {
+	@@_AddToTop_Test01([], "XXX", [ "XXX" ]);
+	@@_AddToTop_Test01([ "A" ], "XXX", [ "XXX", "A" ]);
+	@@_AddToTop_Test01([ "A", "B" ], "XXX", [ "XXX", "A", "B" ]);
+	@@_AddToTop_Test01([ "A", "B", "C" ], "XXX", [ "XXX", "A", "B", "C" ]);
+}
+
+function @@_PopFromTop_Test01(arr, assume) {
+	var ans = SCommon_PopFromTop(arr);
+
+	if(ans != assume) {
+		throw null;
+	}
+}
+
+function @@_PopFromTop() {
+	@@_PopFromTop_Test01([ "A" ], "A");
+	@@_PopFromTop_Test01([ "A", "B" ], "A");
+	@@_PopFromTop_Test01([ "A", "B", "C" ], "A");
+}
+
+function @@_ToJson() {
+	// TODO
+}
+
+function @@_FromJson() {
+	// TODO
+}
+
 // ----
 
 function @@_Main() {
@@ -246,10 +283,10 @@ function @@_Main() {
 	@@_Last();
 	@@_Add();
 	@@_Pop();
-//	@@_AddToTop();
-//	@@_PopFromTop();
-//	@@_ToJson();
-//	@@_FromJson();
+	@@_AddToTop();
+	@@_PopFromTop();
+	@@_ToJson();
+	@@_FromJson();
 
 	// ----
 
