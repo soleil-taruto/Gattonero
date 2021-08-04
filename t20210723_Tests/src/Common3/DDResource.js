@@ -1,28 +1,26 @@
-// TODO
+var @@_LoadingCount = 0;
 
-
-
-function @@_Image(url) {
+function @@_LoadImage(url) {
 	var image = new Image();
 
 	image.src = url;
-	image.onload = Rose_Visitor_Leave;
+	image.onload = () => { @@_LoadingCount--; };
 
-	Rose_Visitor_Enter();
+	@@_LoadingCount++;
 
 	return image;
 }
 
-function @@_Audio(url) {
+function @@_LoadAudio(url) {
 	var audio = new Audio(url);
 
 	audio.load();
 	audio.addEventListener("canplaythrough", function a() {
 		audio.removeEventListener("canplaythrough", a);
-		Rose_Visitor_Leave();
+		@@_LoadingCount--;
 	});
 
-	Rose_Visitor_Enter();
+	@@_LoadingCount++;
 
 	return audio;
 }

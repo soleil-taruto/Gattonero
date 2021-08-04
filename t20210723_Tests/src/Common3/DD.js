@@ -1,7 +1,3 @@
-// TODO
-
-
-
 // ---- @@_Main åƒÇ—èoÇµëOÇ…ïœçXâ¬
 
 var @@_W = 1920;
@@ -24,12 +20,12 @@ function @@_Main(gameMain) {
 	@@_CanvasBox = document.createElement("div");
 	@@_CanvasBox.style.position = "fixed";
 
-	document(@@_CanvasBox, @@_Canvas);
-	Rose_Append(document.body, @@_CanvasBox);
+	Dom_Append(@@_CanvasBox, @@_Canvas);
+	Dom_Append(document.body, @@_CanvasBox);
 
-	@@_Mouse_INIT(@@_Canvas);
+	DDMouse_INIT(@@_Canvas);
 
-	Rose_Resize_Add(function() {
+	Resized_Add(function() {
 		clearTimeout(@@_ResizedTimeoutId);
 		@@_ResizedTimeoutId = setTimeout(@@_Resized, 100);
 	});

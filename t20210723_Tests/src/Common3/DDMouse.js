@@ -1,7 +1,3 @@
-// TODO
-
-
-
 var @@_Down = false;
 var @@_X = 0;
 var @@_Y = 0;
