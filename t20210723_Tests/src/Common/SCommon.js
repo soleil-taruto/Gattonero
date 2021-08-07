@@ -254,3 +254,67 @@ function @@_ToJson(prm) {
 function @@_FromJson(prm) {
 	return JSON.parse(prm);
 }
+
+// overload
+function @@_ZPad(value) {
+	return @@_ZPad(value, 1);
+}
+
+// overload
+function @@_ZPad(value, minlen) {
+	return @@_ZPad(value, minlen, "0");
+}
+
+/*
+	ゼロをパディングするやつ
+
+	value: 文字列またはオブジェクト
+	minlen: パディング後の文字列の(最短の)長さ
+	padding: パディング文字列
+
+	ret: パディング後の文字列
+*/
+function @@_ZPad(value, minlen, padding) {
+	var str = "" + value;
+
+	while(str.length < minlen) {
+		str = padding + str;
+	}
+	return str;
+}
+
+/*
+	現時刻を文字列で返す。
+
+	ret: 現時刻
+*/
+function @@_Now() {
+	var now = new Date();
+
+	var y = now.getFullYear();
+	var m = now.getMonth() + 1;
+	var d = now.getDate();
+	var h = now.getHours();
+	var i = now.getMinutes();
+	var s = now.getSeconds();
+
+	return
+		@@_ZPad(y, 4) + "/" +
+		@@_ZPad(m, 2) + "/" +
+		@@_ZPad(d, 2) + " " +
+		@@_ZPad(h, 2) + ":" +
+		@@_ZPad(i, 2) + ":" +
+		@@_ZPad(s, 2);
+}
+
+/*
+	ログ出力
+
+	message: 出力メッセージ
+
+	ret: message
+*/
+function @@_Log(message) {
+	console.log("[" + @@_Now() + "] " + message);
+	return message;
+}

@@ -267,6 +267,20 @@ function @@_FromJson() {
 	// TODO
 }
 
+function @@_ZPad() {
+	// TODO
+}
+
+function @@_Now() {
+	// TODO
+}
+
+function @@_Log() {
+	SCommon_Log("テストメッセージ_1");
+	SCommon_Log("テストメッセージ_2");
+	SCommon_Log("テストメッセージ_3");
+}
+
 // ----
 
 function @@_Main() {
@@ -287,6 +301,9 @@ function @@_Main() {
 	@@_PopFromTop();
 	@@_ToJson();
 	@@_FromJson();
+	@@_ZPad();
+	@@_Now();
+	@@_Log();
 
 	// ----
 
