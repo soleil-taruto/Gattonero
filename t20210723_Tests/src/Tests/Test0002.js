@@ -1,5 +1,5 @@
 function @@_Main() {
-	console.log("[" + new Date() + "] FourColors_Test");
+	SCommon_Log("FourColors_Test");
 
 //	var TEST_MAX = 10000000;
 //	var TEST_MAX = 1000000;
@@ -8,7 +8,7 @@ function @@_Main() {
 	for(var testCnt = 0; testCnt < TEST_MAX; testCnt++) {
 		@@_DoTest();
 	}
-	console.log("[" + new Date() + "] OK!");
+	SCommon_Log("OK!");
 }
 
 //var @@_COLOR_NUM = 4;

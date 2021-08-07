@@ -256,10 +256,10 @@ function @@_FromJson(prm) {
 }
 
 /*
-	--> @@_ZPad_P
+	--> @@_ZPad_Padding
 */
 function @@_ZPad(value, minlen) {
-	return @@_ZPad_P(value, minlen, "0");
+	return @@_ZPad_Padding(value, minlen, "0");
 }
 
 /*
@@ -271,7 +271,7 @@ function @@_ZPad(value, minlen) {
 
 	ret: パディング後の文字列
 */
-function @@_ZPad_P(value, minlen, padding) {
+function @@_ZPad_Padding(value, minlen, padding) {
 	var str = "" + value;
 
 	while(str.length < minlen) {
