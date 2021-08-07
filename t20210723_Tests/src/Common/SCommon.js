@@ -294,6 +294,7 @@ function @@_Now() {
 	var h = now.getHours();
 	var i = now.getMinutes();
 	var s = now.getSeconds();
+	var l = now.getMilliseconds();
 
 	var ret =
 		@@_ZPad(y, 4) + "/" +
@@ -301,7 +302,8 @@ function @@_Now() {
 		@@_ZPad(d, 2) + " " +
 		@@_ZPad(h, 2) + ":" +
 		@@_ZPad(i, 2) + ":" +
-		@@_ZPad(s, 2);
+		@@_ZPad(s, 2) + "." +
+		@@_ZPad(l, 3);
 
 	return ret;
 }
