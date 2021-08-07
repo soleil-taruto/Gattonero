@@ -255,14 +255,11 @@ function @@_FromJson(prm) {
 	return JSON.parse(prm);
 }
 
-// overload
-function @@_ZPad(value) {
-	return @@_ZPad(value, 1);
-}
-
-// overload
+/*
+	--> @@_ZPad_P
+*/
 function @@_ZPad(value, minlen) {
-	return @@_ZPad(value, minlen, "0");
+	return @@_ZPad_P(value, minlen, "0");
 }
 
 /*
@@ -274,7 +271,7 @@ function @@_ZPad(value, minlen) {
 
 	ret: パディング後の文字列
 */
-function @@_ZPad(value, minlen, padding) {
+function @@_ZPad_P(value, minlen, padding) {
 	var str = "" + value;
 
 	while(str.length < minlen) {
@@ -298,13 +295,15 @@ function @@_Now() {
 	var i = now.getMinutes();
 	var s = now.getSeconds();
 
-	return
+	var ret =
 		@@_ZPad(y, 4) + "/" +
 		@@_ZPad(m, 2) + "/" +
 		@@_ZPad(d, 2) + " " +
 		@@_ZPad(h, 2) + ":" +
 		@@_ZPad(i, 2) + ":" +
 		@@_ZPad(s, 2);
+
+	return ret;
 }
 
 /*
