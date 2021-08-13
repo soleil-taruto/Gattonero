@@ -47,6 +47,10 @@ function @@_TryGuessAny(colors) {
 }
 
 function @@_TryGuess(otherColors, answererIndex) {
+	return (@@_COLOR_NUM - otherColors.reduce((sum, v) => sum += v, 0) % @@_COLOR_NUM + answererIndex) % @@_COLOR_NUM;
+}
+/*
+function @@_TryGuess(otherColors, answererIndex) {
 	var sum = 0;
 	
 	for(var index = 0; index < otherColors.length; index++) {
@@ -54,3 +58,4 @@ function @@_TryGuess(otherColors, answererIndex) {
 	}
 	return (@@_COLOR_NUM - sum % @@_COLOR_NUM + answererIndex) % @@_COLOR_NUM;
 }
+*/
