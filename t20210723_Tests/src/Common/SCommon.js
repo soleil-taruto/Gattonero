@@ -256,10 +256,10 @@ function @@_FromJson(prm) {
 }
 
 /*
-	--> @@_ZPad_Padding
+	--> @@_ZPad2
 */
 function @@_ZPad(value, minlen) {
-	return @@_ZPad_Padding(value, minlen, "0");
+	return @@_ZPad2(value, minlen, "0");
 }
 
 /*
@@ -271,7 +271,7 @@ function @@_ZPad(value, minlen) {
 
 	ret: パディング後の文字列
 */
-function @@_ZPad_Padding(value, minlen, padding) {
+function @@_ZPad2(value, minlen, padding) {
 	var str = "" + value;
 
 	while(str.length < minlen) {
@@ -318,4 +318,73 @@ function @@_Now() {
 function @@_Log(message) {
 	console.log("[" + @@_Now() + "] " + message);
 	return message;
+}
+
+/*
+	--> @@_Tokeniize2
+*/
+function @@_Tokenize(str, delimiters) {
+	return @@_Tokenize2(str, delimiters, false, false);
+}
+
+/*
+	--> @@_Tokeniize3
+*/
+function @@_Tokenize2(str, delimiters, meaningFlag, ignoreEmpty) {
+	return @@_Tokenize3(str, delimiters, meaningFlag, ignoreEmpty, 0);
+}
+
+/*
+	文字列の分割
+
+	str: 文字列
+	delimiters: 区切り文字の集合文字列
+	meaningFlag: delimiters 以外を区切り文字とするか
+	ignoreEmpty: 空文字列のトークンを除去するか
+	limit: 最大トークン数, 0 == 無制限
+
+	ret: トークン配列
+*/
+function @@_Tokenize3(str, delimiters, meaningFlag, ignoreEmpty, limit) {
+	var buff = "";
+	var tokens = [];
+
+	for(var index = 0; index < str.length; index++) {
+		var chr = str.substr(index, 1);
+		var isDelimiter = delimiters.indexOf(chr);
+
+		if(tokens.length + 1 == limit || (delimiters.indexOf(chr) != -1 ? meaningFlag : !meaningFlag)) {
+			buff += chr;
+		}
+		else {
+			if(!ignoreEmpty || buff.length != 0) {
+				tokens.push(buff);
+			}
+			buff = "";
+		}
+	}
+	if(!ignoreEmpty || buff.length != 0) {
+		tokens.push(buff);
+	}
+	return tokens;
+}
+
+/*
+	文字列の分割
+
+	strs: [] 文字列の配列
+	separator: 連結文字列
+
+	ret: 連結した文字列
+*/
+function @@_Untokenize(strs, separator) {
+	var buff = "";
+
+	for(var index = 0; index < strs.length; index++) {
+		if(1 <= index) {
+			buff += separator;
+		}
+		buff += strs[index];
+	}
+	return buff;
 }

@@ -281,6 +281,36 @@ function @@_Log() {
 	SCommon_Log("テストメッセージ_3");
 }
 
+function @@_Tokenize() {
+	@@_Tokenize_Test01("A:B:C", ":", [ "A", "B", "C" ]);
+	@@_Tokenize_Test01("A:B/CあD", ":/あ", [ "A", "B", "C", "D" ]);
+	@@_Tokenize_Test01("_XXX__", "_", [ "", "XXX", "", "" ]);
+	@@_Tokenize_Test01("", "", [ "" ]);
+	@@_Tokenize_Test01("", ":", [ "" ]);
+	@@_Tokenize_Test01(":", "", [ ":" ]);
+	@@_Tokenize_Test01(":", ":", [ "", "" ]);
+}
+
+function @@_Tokenize_Test01(str, delimiters, assume) {
+	var ans = SCommon_Tokenize(str, delimiters);
+
+	if(SCommon_CompArr(ans, assume, SCommon_Comp) != 0) {
+		throw null;
+	}
+}
+
+function @@_Untokenize() {
+	@@_Untokenize_Test01([ "A", "B", "C" ], ":", "A:B:C");
+}
+
+function @@_Untokenize_Test01(strs, separator, assume) {
+	var ans = SCommon_Untokenize(strs, separator);
+
+	if(ans != assume) {
+		throw null;
+	}
+}
+
 // ----
 
 function @@_Main() {
@@ -304,6 +334,8 @@ function @@_Main() {
 	@@_ZPad();
 	@@_Now();
 	@@_Log();
+	@@_Tokenize();
+	@@_Untokenize();
 
 	// ----
 
