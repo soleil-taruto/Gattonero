@@ -335,11 +335,11 @@ function @@_Tokenize2(str, delimiters, meaningFlag, ignoreEmpty) {
 }
 
 /*
-	文字列の分割
+	文字列を区切り文字で分割する。
 
 	str: 文字列
 	delimiters: 区切り文字の集合文字列
-	meaningFlag: delimiters 以外を区切り文字とするか
+	meaningFlag: 区切り文字(delimiters)以外を区切り文字とするか
 	ignoreEmpty: 空文字列のトークンを除去するか
 	limit: 最大トークン数, 0 == 無制限
 
