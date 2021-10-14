@@ -1,34 +1,15 @@
-/*
-	idからドキュメント内のタグを取得する。
-
-	id: id
-
-	ret: タグ
-*/
+// タグ取得
 function @@_Get(id) {
 	return document.getElementById(id);
 }
 
-/*
-	タグの配下にタグを追加する。
-
-	parentTag: 追加先のタグ
-	tag: 追加するタグ
-
-	ret: tag
-*/
+// タグ追加
 function @@_Append(parentTag, tag) {
 	parentTag.appendChild(tag);
 	return tag;
 }
 
-/*
-	タグを削除する。
-
-	tag: 削除するタグ
-
-	ret: tag
-*/
+// タグ削除
 function @@_Remove(tag) {
 	tag.parentNode.removeChild(tag);
 	return tag;
@@ -37,7 +18,7 @@ function @@_Remove(tag) {
 /*
 	HTTPリクエストを投げる。
 
-	method: "GET", "POST" (他のメソッドは想定しない)
+	method: "GET", "POST"
 	url: URL
 	prm: GET の場合は null, POST の場合は Json など
 	def: 失敗時のレスポンスオブジェクト
@@ -47,12 +28,12 @@ function @@_Remove(tag) {
 
 	ex.
 		@@_Request("GET", "/coffee/sugar.xxx?a=123", null, "{}", res => {
-			var obj = SCommon_FromJson(res);
+			var obj = Ako_FromJson(res);
 			console.log(obj);
 		});
 
-		@@_Request("POST", "/coffee/sugar.xxx", SCommon_ToJson({ a: 123 }), "{}", res => {
-			var obj = SCommon_FromJson(res);
+		@@_Request("POST", "/coffee/sugar.xxx", Ako_ToJson({ a: 123 }), "{}", res => {
+			var obj = Ako_FromJson(res);
 			console.log(obj);
 		});
 */
