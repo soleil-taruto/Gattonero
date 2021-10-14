@@ -23,7 +23,7 @@ function @@_Main(gameMain) {
 	Dom_Append(@@_CanvasBox, @@_Canvas);
 	Dom_Append(document.body, @@_CanvasBox);
 
-	DDMouse_INIT(@@_Canvas);
+	DDMouse_INIT();
 
 	Resized_Add(function() {
 		clearTimeout(@@_ResizedTimeoutId);
